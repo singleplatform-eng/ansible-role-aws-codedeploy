@@ -1,15 +1,10 @@
 ---
 # tasks file for aws_codedeploy
-
-- name: Download codedeploy agent package
-  get_url:
-    url: https://s3.amazonaws.com/aws-codedeploy-us-east-1/latest/codedeploy-agent_all.deb
-    dest: /tmp/codedeploy_package.deb
-
+#
 - name: Install codedeploy agent package
   apt:
-    deb: /tmp/codedeploy_package.deb
+    deb: "https://s3.amazonaws.com/aws-codedeploy-us-east-1/latest/codedeploy-agent_all.deb"
     state: present
     update_cache: no
-  become: root
+  become: yes
 
